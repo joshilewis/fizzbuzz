@@ -26,8 +26,8 @@ namespace Tests
 
         private void ActAndAssert()
         {
-            var fizzBuzzer = new FizzBuzzer();
-            List<string> actual = fizzBuzzer.FizzBuzzIt(count);
+            var FizzBuzzer = new FizzBuzzer();
+            List<string> actual = FizzBuzzer.FizzBuzzIt(count);
 
             Assert.That(actual, Is.EqualTo(expectedOutput));
         }
@@ -48,7 +48,7 @@ namespace Tests
         {
             count = 3;
 
-            expectedOutput = new List<string>() { "1", "2", "fizz" };
+            expectedOutput = new List<string>() { "1", "2", "Fizz" };
 
             ActAndAssert();
         }
@@ -58,7 +58,7 @@ namespace Tests
         {
             count = 5;
 
-            expectedOutput = new List<string>() { "1", "2", "fizz", "4", "buzz"};
+            expectedOutput = new List<string>() { "1", "2", "Fizz", "4", "Buzz"};
 
             ActAndAssert();
         }
@@ -68,7 +68,7 @@ namespace Tests
         {
             count = 6;
 
-            expectedOutput = new List<string>() { "1", "2", "fizz", "4", "buzz", "fizz" };
+            expectedOutput = new List<string>() { "1", "2", "Fizz", "4", "Buzz", "Fizz" };
 
             ActAndAssert();
         }
@@ -78,7 +78,17 @@ namespace Tests
         {
             count = 10;
 
-            expectedOutput = new List<string>() { "1", "2", "fizz", "4", "buzz", "fizz", "7", "8", "fizz", "buzz" };
+            expectedOutput = new List<string>() { "1", "2", "Fizz", "4", "Buzz", "Fizz", "7", "8", "Fizz", "Buzz" };
+
+            ActAndAssert();
+        }
+
+        [Test]
+        public void Test_FizzBuzz_1()
+        {
+            count = 15;
+
+            expectedOutput = new List<string>() { "1", "2", "Fizz", "4", "Buzz", "Fizz", "7", "8", "Fizz", "Buzz", "11", "Fizz", "13", "14", "FizzBuzz" };
 
             ActAndAssert();
         }
@@ -104,10 +114,10 @@ namespace Tests
         public virtual string Classifier(int number)
         {
             if (number%3 == 0)
-                return "fizz";
+                return "Fizz";
 
             if (number % 5 == 0)
-                return "buzz";
+                return "Buzz";
 
             return number.ToString();
         }
