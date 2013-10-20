@@ -10,8 +10,7 @@ namespace Tests
     [TestFixture]
     public class FizzBuzzerTests
     {
-        private int starting;
-        private int ending;
+        private int count;
 
         private List<int> expectedOutput;
 
@@ -28,7 +27,7 @@ namespace Tests
         private void ActAndAssert()
         {
             var fizzBuzzer = new FizzBuzzer();
-            List<int> actual = fizzBuzzer.FizzBuzzIt(starting, ending);
+            List<int> actual = fizzBuzzer.FizzBuzzIt(count);
 
             Assert.That(actual, Is.EqualTo(expectedOutput));
         }
@@ -36,8 +35,7 @@ namespace Tests
         [Test]
         public void Test_Range()
         {
-            starting = 0;
-            ending = 2;
+            count = 3;
 
             expectedOutput = new List<int>()
             {0, 1, 2};
@@ -49,11 +47,11 @@ namespace Tests
 
     public class FizzBuzzer
     {
-        public virtual List<int> FizzBuzzIt(int start, int end)
+        public virtual List<int> FizzBuzzIt(int count)
         {
             var toReturn = new List<int>();
 
-            toReturn = Enumerable.Range(start, end - start + 1).ToList();
+            toReturn = Enumerable.Range(0, count).ToList();
 
             return toReturn;
         }
