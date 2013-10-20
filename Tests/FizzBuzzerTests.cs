@@ -54,15 +54,14 @@ namespace Tests
         }
 
         [Test]
-        public void Test_Fizz_2()
+        public void Test_Buzz_1()
         {
-            count = 6;
+            count = 5;
 
-            expectedOutput = new List<string>() { "1", "2", "fizz", "4", "5", "fizz" };
+            expectedOutput = new List<string>() { "1", "2", "fizz", "4", "buzz"};
 
             ActAndAssert();
         }
-
 
     }
 
