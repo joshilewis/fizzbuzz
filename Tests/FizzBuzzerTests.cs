@@ -69,6 +69,11 @@ namespace Tests
                 .ToList()
                 ;
 
+            for (var i = 3; i < toReturn.Count; i = i + 3)
+            {
+                toReturn[i] = "fizz";
+            }
+
             return toReturn;
         }
     }
