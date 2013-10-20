@@ -63,6 +63,26 @@ namespace Tests
             ActAndAssert();
         }
 
+        [Test]
+        public void Test_Fizz_2()
+        {
+            count = 6;
+
+            expectedOutput = new List<string>() { "1", "2", "fizz", "4", "buzz", "fizz" };
+
+            ActAndAssert();
+        }
+
+        [Test]
+        public void Test_Buzz_2()
+        {
+            count = 10;
+
+            expectedOutput = new List<string>() { "1", "2", "fizz", "4", "buzz", "fizz", "7", "8", "fizz", "buzz" };
+
+            ActAndAssert();
+        }
+
     }
 
     public class FizzBuzzer
