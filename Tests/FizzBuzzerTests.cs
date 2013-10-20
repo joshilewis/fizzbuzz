@@ -26,10 +26,10 @@ namespace Tests
 
         private void ActAndAssert()
         {
-            var FizzBuzzer = new FizzBuzzer();
-            List<string> actual = FizzBuzzer.FizzBuzzIt(count);
+            var fizzBuzzer = new FizzBuzzer();
+            IEnumerable<string> actual = fizzBuzzer.FizzBuzzIt(count);
 
-            Assert.That(actual, Is.EqualTo(expectedOutput));
+            Assert.That(actual, Is.EquivalentTo(expectedOutput));
         }
 
         [Test]
@@ -97,18 +97,12 @@ namespace Tests
 
     public class FizzBuzzer
     {
-        public virtual List<string> FizzBuzzIt(int count)
+        public virtual IEnumerable<string> FizzBuzzIt(int count)
         {
-            var toReturn = new List<string>();
-
-            var numbers = Enumerable.Range(1, count);
-
-            toReturn = numbers
+            return Enumerable
+                .Range(1, count)
                 .Select(Classifier)
-                .ToList()
                 ;
-
-            return toReturn;
         }
 
         public virtual string Classifier(int number)
