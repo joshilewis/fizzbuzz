@@ -12,7 +12,7 @@ namespace Tests
     {
         private int count;
 
-        private List<int> expectedOutput;
+        private List<string> expectedOutput;
 
         [SetUp]
         public void SetUp()
@@ -27,18 +27,18 @@ namespace Tests
         private void ActAndAssert()
         {
             var fizzBuzzer = new FizzBuzzer();
-            List<int> actual = fizzBuzzer.FizzBuzzIt(count);
+            List<string> actual = fizzBuzzer.FizzBuzzIt(count);
 
             Assert.That(actual, Is.EqualTo(expectedOutput));
         }
 
         [Test]
-        public void Test_Range()
+        public void Test_Text()
         {
             count = 3;
 
-            expectedOutput = new List<int>()
-            {0, 1, 2};
+            expectedOutput = new List<string>()
+            {"0", "1", "2"};
 
             ActAndAssert();
         }
@@ -47,11 +47,16 @@ namespace Tests
 
     public class FizzBuzzer
     {
-        public virtual List<int> FizzBuzzIt(int count)
+        public virtual List<string> FizzBuzzIt(int count)
         {
-            var toReturn = new List<int>();
+            var toReturn = new List<string>();
 
-            toReturn = Enumerable.Range(0, count).ToList();
+            var numbers = Enumerable.Range(0, count);
+
+            toReturn = numbers
+                .Select(x => x.ToString())
+                .ToList()
+                ;
 
             return toReturn;
         }
