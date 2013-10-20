@@ -85,6 +85,11 @@ namespace Tests
                 toReturn[i] = "fizz";
             }
 
+            for (var i = 5; i < toReturn.Count; i = i + 5)
+            {
+                toReturn[i] = "buzz";
+            }
+
             return toReturn;
         }
     }
