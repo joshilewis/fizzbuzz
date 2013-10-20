@@ -33,7 +33,7 @@ namespace Tests
         }
 
         [Test]
-        public void Test_Text()
+        public void Test_None()
         {
             count = 3;
 
@@ -44,26 +44,15 @@ namespace Tests
         }
 
         [Test]
-        public void Test_Fizz()
+        public void Test_Fizz_1()
         {
             count = 4;
 
-            expectedOutput = new List<string>() { "0", "1", "2", "fizz" };
+            expectedOutput = new List<string>() { "0", "1", "fizz" };
 
             ActAndAssert();
-
         }
 
-        [Test]
-        public void Test_Buzz()
-        {
-            count = 6;
-
-            expectedOutput = new List<string>() { "0", "1", "2", "fizz", "4", "buzz" };
-
-            ActAndAssert();
-
-        }
 
     }
 
@@ -76,21 +65,16 @@ namespace Tests
             var numbers = Enumerable.Range(0, count);
 
             toReturn = numbers
-                .Select(x => x.ToString())
+                .Select(Classifier)
                 .ToList()
                 ;
 
-            for (var i = 3; i < toReturn.Count; i = i + 3)
-            {
-                toReturn[i] = "fizz";
-            }
-
-            for (var i = 5; i < toReturn.Count; i = i + 5)
-            {
-                toReturn[i] = "buzz";
-            }
-
             return toReturn;
+        }
+
+        public virtual string Classifier(int number)
+        {
+            return number.ToString();
         }
     }
 }
